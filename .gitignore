@@ -1,8 +1,7 @@
 /Debug/
-.vs/ProjectSettings.json
-.vs/Schmeiser Robo/v15/.suo
-.vs/Schmeiser Robo/v15/Browse.VC.db
-.vs/Schmeiser Robo/v15/Browse.VC.opendb
-.vs/Schmeiser Robo/v15/ipch/AutoPCH/828858da5dd389b5/COMMON.ipch
-.vs/Schmeiser Robo/v15/ipch/AutoPCH/b322856a7bdfa875/STA_TEST.ipch
-.vs/slnx.sqlite
+keilkill.bat
+
+.gitattributes
+.settings
+.vs
+.git
