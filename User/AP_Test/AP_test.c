@@ -5,6 +5,7 @@
 #include <string.h>  
 #include <stdbool.h>
 #include "bsp_led.h"
+#include "bsp_motor.h"
 
 
 
@@ -16,11 +17,11 @@
 void ESP8266_StaTcpClient_UnvarnishTest ( void )
 {
 	uint8_t ucId, ucLen;
-	uint8_t ucLed1Status = 0, ucLed2Status = 0, ucLed3Status = 0, ucBuzzerStatus = 0;
+	uint8_t Speed_Left, Speed_Right, Speed_Fight;
 
-	char cStr [ 100 ] = { 0 }, cCh;
+	char cStr [ 100 ] = { 0 }, cCh1,cCh2;
 
-  char * pCh, * pCh1;
+  char * pstr, * pCh1;
 	
 
 	macESP8266_CH_ENABLE();     	//CH:PortG.13
@@ -56,121 +57,47 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 		{
 			USART_ITConfig ( macESP8266_USARTx, USART_IT_RXNE, DISABLE ); //禁用串口接收中断
 			strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ]  = '\0';
-			
-//			printf ( "\r\n%s\r\n", strEsp8266_Fram_Record .Data_RX_BUF );//
-			if ( ( pCh = strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "CMD_LED_" ) ) != 0 ) 
-			{
-				cCh = * ( pCh + 8 );
-				
-				switch ( cCh )
-				{
-					case '1':
-						cCh = * ( pCh + 10 );
-					  switch ( cCh )
-					  {
-							case '0':
-								macLED1_OFF ();
-							  ucLed1Status = 0;
-						    break;
-							case '1':
-								macLED1_ON ();
-							  ucLed1Status = 1;
-						    break;
-							default :
-								break;
-						}
-						break;
-						
-					case '2':
-						cCh = * ( pCh + 10 );
-					  switch ( cCh )
-					  {
-							case '0':
-								macLED2_OFF ();
-							  ucLed2Status = 0;
-						    break;
-							case '1':
-								macLED2_ON ();
-							  ucLed2Status = 1;
-						    break;
-							default :
-								break;
-						}
-						break;
 
-					case '3':
-						cCh = * ( pCh + 10 );
-					  switch ( cCh )
-					  {
-							case '0':
-								macLED3_OFF ();
-							  ucLed3Status = 0;
-						    break;
-							case '1':
-								macLED3_ON ();
-							  ucLed3Status = 1;
-						    break;
-							default :
-								break;
-						}
-						break;
-						
-				  default :
-            break;					
-						
-				}
+			//左轮速度指令
+			if ( ( pstr = strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "LEFT_MOVE_" ) ) != 0 ) 
+			{
+				cCh1 = * ( pstr + 10 );
+				cCh2 = * ( pstr + 11 );
 				
-				sprintf ( cStr, "CMD_LED_%d_%d_%d_ENDLED_END", ucLed1Status, ucLed2Status, ucLed3Status );
+				Speed_Left = (cCh1 - 48) * 10 + (cCh2 - 48);
+				Left_Motor( Speed_Left );
+				
+				
+				//sprintf ( cStr, "CMD_LED_%d_ENDLED_END", ucLed1Status );
 				
 			}
-			
-			else if ( ( pCh = strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "CMD_BUZZER_" ) ) != 0 ) 
+			//右轮速度指令
+			else if ( ( pstr = strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "RIGHT_MOVE_" ) ) != 0 ) 
 			{
-				cCh = * ( pCh + 11 );
+				cCh1 = *(pstr + 11);
+				cCh2 = *(pstr + 12);
+
+				Speed_Right = (cCh1 - 48) * 10 + (cCh2 - 48);
+				Right_Motor(Speed_Right);
 				
-				switch ( cCh )
-				{
-					case '0':
-						macBEEP_OFF ();
-					  ucBuzzerStatus = 0;
-						break;
-					case '1':
-						macBEEP_ON ();
-					  ucBuzzerStatus = 1;
-						break;
-					default:
-						break;
-				}
-				
-				sprintf ( cStr, "CMD_BUZZER_%d_ENDBUZZER_END", ucBuzzerStatus );
+				//sprintf ( cStr, "CMD_BUZZER_%d_ENDBUZZER_END", ucBuzzerStatus );
 				
 			}
-				
-			else if ( ( ( pCh  = strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "CMD_UART_" ) ) != 0 ) && 
-				        ( ( pCh1 = strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "_ENDUART_END" ) )  != 0 ) ) 
+			//武器系统速度指令 	
+			else if ( ( ( pstr  = strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "FIGHT_" ) ) != 0 )
 			{
-				if ( pCh < pCh1)
-				{
-					ucLen = pCh1 - pCh + 12;
-					memcpy ( cStr, pCh, ucLen );
-					cStr [ ucLen ] = '\0';
-				}
+				cCh1 = *(pstr + 6);
+				cCh2 = *(pstr + 7);
+
+				Speed_Fight = (cCh1 - 48) * 10 + (cCh2 - 48);
+				Fight_Motor(Speed_Fight);
 			}
 
-			else if ( strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "CMD_READ_ALL_END" ) != 0 ) 
-			{
-				DHT11_Read_TempAndHumidity ( & DHT11_Data );
-				sprintf ( cStr, "CMD_LED_%d_%d_%d_ENDLED_DHT11_%d.%d_%d.%d_ENDDHT11_BUZZER_%d_ENDBUZZER_END", 
-									ucLed1Status, ucLed2Status, ucLed3Status, DHT11_Data .temp_int, 
-			            DHT11_Data .temp_deci, DHT11_Data .humi_int, DHT11_Data .humi_deci,
-                  ucBuzzerStatus );
-			}
-			
 				
 			
 			
-		  strEsp8266_Fram_Record .InfBit .FramLength = 0;
-	    strEsp8266_Fram_Record .InfBit .FramFinishFlag = 0;	
+			strEsp8266_Fram_Record .InfBit .FramLength = 0;
+			strEsp8266_Fram_Record .InfBit .FramFinishFlag = 0;	
 			
 			USART_ITConfig ( macESP8266_USARTx, USART_IT_RXNE, ENABLE ); //使能串口接收中断
 			

@@ -37,3 +37,9 @@ keilkill.bat
 *.axf 
 *.tra 
 *.dep   
+.vs/Schmeiser Robo/v15/Browse.VC.opendb
+.vs/Schmeiser Robo/v15/ipch/AutoPCH/1ce0d9a6c5b5f7ff/AP_MAIN.ipch
+.vs/Schmeiser Robo/v15/ipch/AutoPCH/7683f99ed0e59a88/INIT.ipch
+.vs/Schmeiser Robo/v15/ipch/AutoPCH/879187cd942c7433/BSP_MOTOR.ipch
+.vs/Schmeiser Robo/v15/ipch/AutoPCH/923d3bc047edb47d/AP_TEST.ipch
+.vs/Schmeiser Robo/v15/ipch/AutoPCH/ff361b7d70c42f43/BSP_GENERALTIM.ipch
