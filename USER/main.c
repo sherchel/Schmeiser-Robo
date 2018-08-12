@@ -1,38 +1,54 @@
-#include "led.h"
-#include "delay.h"
-#include "key.h"
-#include "sys.h"
-#include "usart.h"
+/**
+  ******************************************************************************
+  * @file    main.c
+  * @author  fire
+  * @version V1.0
+  * @date    2015-01-xx
+  * @brief   WF-ESP8266 WiFi模块测试
+  ******************************************************************************
+  * @attention
+  *
+  * 实验平台:野火 iSO STM32 开发板 
+  * 论坛    :http://www.firebbs.cn
+  * 淘宝    :https://fire-stm32.taobao.com
+  *
+  ******************************************************************************
+  */ 
  
-/************************************************
- ALIENTEK精英STM32开发板实验4
- 串口 实验   
- 技术支持：www.openedv.com
- 淘宝店铺：http://eboard.taobao.com 
- 关注微信公众平台微信号："正点原子"，免费获取STM32资料。
- 广州市星翼电子科技有限公司  
- 作者：正点原子 @ALIENTEK
-************************************************/
- int main(void)
- {		
- 	u16 t;  
-	u16 len;	
-	u16 times=0;
-	delay_init();	    	 //延时函数初始化	  
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); //设置NVIC中断分组2:2位抢占优先级，2位响应优先级
-	uart_init(115200);	 //串口初始化为115200
- 	LED_Init();			     //LED端口初始化
-	KEY_Init();          //初始化与按键连接的硬件接口
- 	while(1)
-	{
-		for(t=0;t<4;t++)
-			{
-				USART_SendData(USART1, USART_RX_BUF[t]);//向串口1发送数据
-				while(USART_GetFlagStatus(USART1,USART_FLAG_TC)!=SET);//等待发送结束  
-			}					
-			printf("\r\n\r\n");//插入换行
-			USART_RX_STA=0;
-		
-	}	 
- }
+#include "stm32f10x.h"
+#include "bsp_usart1.h"
+#include "bsp_SysTick.h"
+#include "bsp_esp8266.h"
+#include "test.h"
+#include "bsp_led.h"
 
+ 
+ 
+
+/**
+  * @brief  主函数
+  * @param  无
+  * @retval 无
+  */
+int main ( void )
+{
+	/* 初始化 */
+  USARTx_Config ();                                                              //初始化串口1
+	SysTick_Init ();                                                               //配置 SysTick 为 1ms 中断一次 
+	ESP8266_Init ();                                                               //初始化WiFi模块使用的接口和外设
+  LED_Init ();
+	
+	
+	printf ( "\r\n野火 WF-ESP8266 WiFi模块测试例程\r\n" );                          //打印测试例程提示信息
+	
+	
+  ESP8266_StaTcpClient_UnvarnishTest ();
+	
+	
+  while ( 1 );
+	
+	
+}
+
+
+/*********************************************END OF FILE**********************/
