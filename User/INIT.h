@@ -8,6 +8,7 @@
 #include "bsp_esp8266.h"
 #include "bsp_led.h"
 #include "bsp_GeneralTim.h"
+#include "ADC.h"
 #include "AP_test.h"
 #include "STA_test.h"
 
