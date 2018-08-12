@@ -1,7 +1,18 @@
 /Debug/
+
 keilkill.bat
 
 .gitattributes
-.settings
-.vs
 .git
+.settings/com.atollic.truestudio.debug.hardware_device.prefs
+.settings/language.settings.xml
+.settings/org.eclipse.cdt.managedbuilder.core.prefs
+.vs/ProjectSettings.json
+.vs/Schmeiser Robo/v15/.suo
+.vs/Schmeiser Robo/v15/Browse.VC.db
+.vs/Schmeiser Robo/v15/ipch/AutoPCH/828858da5dd389b5/COMMON.ipch
+.vs/Schmeiser Robo/v15/ipch/AutoPCH/b322856a7bdfa875/STA_TEST.ipch
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+keilkill.bat
+.gitattributes
