@@ -1,5 +1,5 @@
 /Debug/
-
+.vs
 keilkill.bat
 
 .gitattributes
@@ -44,4 +44,5 @@ keilkill.bat
 .vs/Schmeiser Robo/v15/ipch/AutoPCH/923d3bc047edb47d/AP_TEST.ipch
 .vs/Schmeiser Robo/v15/ipch/AutoPCH/ff361b7d70c42f43/BSP_GENERALTIM.ipch
 .vs/slnx.sqlite-journal
-.vs/Schmeiser Robo/v15/ipch/AutoPCH/9b92e7cad6888eca/BSP_USART1.ipch
+.vs/Schmeiser Robo/v15/ipch/AutoPCH/9b92e7cad6888eca/
+
