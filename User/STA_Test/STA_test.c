@@ -23,9 +23,9 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	uint8_t ucStatus;
 	
 	char cStr [ 100 ] = { 0 };
-	
+	u16 adcL = 0, adcR = 0，adcF = 0;
 
-	macESP8266_CH_ENABLE();		//CH:PortG.13
+	macESP8266_CH_ENABLE();		
 	
 	ESP8266_AT_Test ();			//ESP work inspection
 	
@@ -47,15 +47,15 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	
 	while ( 1 )
 	{		
-		//sprintf ( cStr,"ABCDEFGHIJKLMNOPQRSTUVWXYZ\r\n" );
-		adcUD = Get_Adc_Average(ADC_Channel_1, 10);
-		adcLR = Get_Adc_Average(ADC_Channel_2, 10);
+		adcL = Get_Adc_Average(ADC_Channel_0, 10) / 1.4 * 99;
+		adcD = Get_Adc_Average(ADC_Channel_1, 10) / 1.4 * 99;
+		adcF = Get_Adc_Average(ADC_Channel_2, 10) / 1.4 * 99;
 		
-		sprintf(cStr,"ABCDEFGHIJKLMNOPQRSTUVWXYZ\r\nABCDEFGHIJKLMNOPQRSTUVWXYZ\r");
+		sprintf(cStr, "LEFT_MOVE_%d\r\nRIGHT_MOVE_%d\r\nFIGHT_%d\r\n", adcL, adcD, adcF);
 
-		ESP8266_SendString ( ENABLE, cStr, 0, Single_ID_0 );               //发送数据
+		ESP8266_SendString ( ENABLE, cStr, 0, Single_ID_0 );               //发送数据,这里的Single_ID_0大概表示单人发送
 		
-		Delay_ms ( 100 );
+		Delay_us ( 100000 );
 		
 		if ( ucTcpClosedFlag )                                             //检测是否失去连接
 		{
