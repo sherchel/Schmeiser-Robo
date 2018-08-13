@@ -25,6 +25,3 @@
 	STA_test.c中读取遥控器油门杆的ADC值
 	目前读取的ADC值为PA0/PA1,分别为U,D,均为ADC1
 	更改ADC通道应到ADC.c中更改
-
-#### 2018.08.13
-将总代码拆分为Schmeiser Robo_AP和Schmeiser Robo_STA
