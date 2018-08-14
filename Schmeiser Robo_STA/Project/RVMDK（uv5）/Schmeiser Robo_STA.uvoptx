@@ -120,7 +120,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>囔?</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -154,14 +153,14 @@
           <Type>0</Type>
           <LineNumber>27</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134229310</Address>
+          <Address>134226942</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_STA\Project\User\STA_Test\STA_test.c</Filename>
+          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo\Schmeiser Robo_STA\Project\User\STA_Test\STA_test.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Schmeiser_Robo_STA\../../User/STA_Test/STA_test.c\27</Expression>
         </Bp>
@@ -170,48 +169,32 @@
           <Type>0</Type>
           <LineNumber>55</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134229460</Address>
+          <Address>134226962</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_STA\Project\User\STA_Test\STA_test.c</Filename>
+          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo\Schmeiser Robo_STA\Project\User\STA_Test\STA_test.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Schmeiser_Robo_STA\../../User/STA_Test/STA_test.c\55</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>52</LineNumber>
+          <LineNumber>96</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134229368</Address>
+          <Address>134226494</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_STA\Project\User\STA_Test\STA_test.c</Filename>
+          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo\Schmeiser Robo_STA\Project\User\ADC\adc.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Schmeiser_Robo_STA\../../User/STA_Test/STA_test.c\52</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>53</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134229414</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_STA\Project\User\STA_Test\STA_test.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Schmeiser_Robo_STA\../../User/STA_Test/STA_test.c\53</Expression>
+          <Expression>\\Schmeiser_Robo_STA\../../User/ADC/adc.c\96</Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>

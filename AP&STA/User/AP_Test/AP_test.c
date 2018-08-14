@@ -24,9 +24,9 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
   char * pstr, * pCh1;
 	
 
-	macESP8266_CH_ENABLE();
+	//macESP8266_CH_ENABLE();
 	
-	ESP8266_AT_Test ();						//ESP work inspection
+	//ESP8266_AT_Test ();						//ESP work inspection
 	
 	ESP8266_Net_Mode_Choose ( AP );     	//serve as AP
 

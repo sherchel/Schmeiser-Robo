@@ -6,7 +6,7 @@
 
 void Adc_Init(void);
 void ADC1_2_IRQHandler(void);
-u16  Get_Adc(u8 ch); 
-u16 Get_Adc_Average(u8 ch,u8 times); 
+u16  Get_Adc(u8 ch,u8 order); 
+u16 Get_Adc_Average(u8 ch,u8 order,u8 times); 
  
 #endif 

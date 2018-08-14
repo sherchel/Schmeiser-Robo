@@ -27,36 +27,36 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	u16 adcL = 0, adcR = 0, adcF = 0;
 
 //	macESP8266_CH_ENABLE();		
-//	
+	
 //	ESP8266_AT_Test ();			//ESP work inspection
-//	
-//	ESP8266_Net_Mode_Choose ( STA );		//serve as STP
+	
+	ESP8266_Net_Mode_Choose ( STA );		//serve as STP
 
-//  //JoinAP's Ip  ***SET Here***
-//	while ( ! ESP8266_JoinAP ( macUser_ESP8266_ApSsid, macUser_ESP8266_ApPwd ) );	
-//	
-//	// One-to-many DISABLE
-//	ESP8266_Enable_MultipleId ( DISABLE );
-//	
-//	
-//	while ( !	ESP8266_Link_Server ( enumTCP, macUser_ESP8266_TcpServer_IP, macUser_ESP8266_TcpServer_Port, Single_ID_0 ) );
-//	
-//	while ( ! ESP8266_UnvarnishSend () );
+    //JoinAP's Ip  ***SET Here***
+	while ( ! ESP8266_JoinAP ( macUser_ESP8266_ApSsid, macUser_ESP8266_ApPwd ) );	
+	
+	// One-to-many DISABLE
+	ESP8266_Enable_MultipleId ( DISABLE );
+	
+	
+	while ( !	ESP8266_Link_Server ( enumTCP, macUser_ESP8266_TcpServer_IP, macUser_ESP8266_TcpServer_Port, Single_ID_0 ) );
+	
+	while ( ! ESP8266_UnvarnishSend () );
 	
 	//STP's Configuration Finished
 	
 	
 	while ( 1 )
 	{		
-		adcL = Get_Adc_Average(ADC_Channel_0, 10) / 1.4 * 99;
-		adcR = Get_Adc_Average(ADC_Channel_1, 10) / 1.4 * 99;
-		adcF = Get_Adc_Average(ADC_Channel_2, 10) / 1.4 * 99;
+		adcL = Get_Adc_Average(ADC_Channel_0,1,10);
+		adcR = Get_Adc_Average(ADC_Channel_1, 2,10);
+		adcF = Get_Adc_Average(ADC_Channel_2, 3,10);
 		
 		sprintf(cStr, "LEFT_MOVE_%d\r\nRIGHT_MOVE_%d\r\nFIGHT_%d\r\n", adcL, adcR, adcF);
 
 		ESP8266_SendString ( ENABLE, cStr, 0, Single_ID_0 );               //发送数据,这里的Single_ID_0大概表示单人发送
 		
-		Delay_us ( 100000 );
+		Delay_us ( 100 );
 		
 		if ( ucTcpClosedFlag )                                             //检测是否失去连接
 		{

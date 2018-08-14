@@ -26,8 +26,8 @@ void  Adc_Init(void)
 	ADC_DeInit(ADC1);  //复位ADC1,将外设 ADC1 的全部寄存器重设为缺省值
 
 	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;	//ADC工作模式:ADC1和ADC2工作在独立模式
-	ADC_InitStructure.ADC_ScanConvMode = DISABLE;	//模数转换工作在单通道模式
-	ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;	//模数转换工作在单次转换模式
+	ADC_InitStructure.ADC_ScanConvMode = ENABLE;	//模数转换工作在duo通道模式
+	ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;	//模数转换工作在lianxu转换模式
 	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;	//转换由软件而不是外部触发启动
 	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;	//ADC数据右对齐
 	ADC_InitStructure.ADC_NbrOfChannel = 3;	//顺序进行规则转换的ADC通道的数目
@@ -54,14 +54,14 @@ void  Adc_Init(void)
 void NVIC_ADC1_Configuration(void)
 {
 
-	NVIC_InitTypeDef NVIC_InitStructure;  //定义中断结构体
+//	NVIC_InitTypeDef NVIC_InitStructure;  //定义中断结构体
 
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);  //设置中断分组
-	NVIC_InitStructure.NVIC_IRQChannel = ADC1_2_IRQn;  //制定专断通道
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;  //使能中断
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;  //抢占优先级
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;   //子优先级
-	NVIC_Init(&NVIC_InitStructure);   //初始化
+//	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);  //设置中断分组
+//	NVIC_InitStructure.NVIC_IRQChannel = ADC1_2_IRQn;  //制定专断通道
+//	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;  //使能中断
+//	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;  //抢占优先级
+//	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;   //子优先级
+//	//(&NVIC_InitStructure);   //初始化
 }
 
 
@@ -90,11 +90,13 @@ void ADC1_2_IRQHandler(void)
 
 //获得ADC值
 //ch:通道值 0~3
-u16 Get_Adc(u8 ch)   
+u16 Get_Adc(u8 ch,u8 order)   
 {
   	//设置指定ADC的规则组通道，一个序列，采样时间
-	ADC_RegularChannelConfig(ADC1, ch, 1, ADC_SampleTime_239Cycles5 );	//ADC1,ADC通道,采样时间为239.5周期	  			    
-  
+	ADC_RegularChannelConfig(ADC1, ch, 1, ADC_SampleTime_239Cycles5  );	//ADC1,ADC通道ch,采样时间为239.5周期	 
+	ADC_RegularChannelConfig(ADC1, ch, 2, ADC_SampleTime_239Cycles5  );	//ADC1,ADC通道ch,采样时间为239.5周期	 
+	ADC_RegularChannelConfig(ADC1, ch, 3, ADC_SampleTime_239Cycles5  );	//ADC1,ADC通道ch,采样时间为239.5周期	 
+
 	ADC_SoftwareStartConvCmd(ADC1, ENABLE);		//使能指定的ADC1的软件转换启动功能	
 	 
 	while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC ));//等待转换结束
@@ -102,16 +104,17 @@ u16 Get_Adc(u8 ch)
 	return ADC_GetConversionValue(ADC1);	//返回最近一次ADC1规则组的转换结果
 }
 
-u16 Get_Adc_Average(u8 ch,u8 times)
+u16 Get_Adc_Average(u8 ch,u8 order,u8 times)
 {
-	u32 temp_val=0;
+	u16 temp_val=0;
 	u8 t;
 	for(t=0;t<times;t++)
 	{
-		temp_val+=Get_Adc(ch);
-		//Delay_ms(5);
-		printf("%f\r\n",temp_val);
+		temp_val=Get_Adc(ch,order);
+		//Delay_us(1);
+		printf("%d=%d\r\n",order,temp_val );
 	}
+//	printf("%d=%d\r\n",order,temp_val/times);
 	return temp_val/times;
 } 	 
 
