@@ -10,13 +10,12 @@
       <TargetName>Schmeiser Robo_STA</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060183::V5.06 update 2 (build 183)::ARMCC</pCCUsed>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F103ZE</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F1xx_DFP.1.1.0</PackID>
+          <PackID>Keil.STM32F1xx_DFP.2.2.0</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x10000) IROM(0x08000000,0x80000) CPUTYPE("Cortex-M3") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -336,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\Libraries\FWlib\inc;..\..\User;..\..\User\ADC;..\..\User\ESP8266;..\..\User\GeneralTim;..\..\User\STA_Test;..\..\User\SYS_BASE\Common;..\..\User\SYS_BASE\gpio;..\..\User\SYS_BASE\led;..\..\User\SYS_BASE\SysTick;..\..\User\SYS_BASE\usart</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\Libraries\FWlib\inc;..\..\User;..\..\User\ADC;..\..\User\ESP8266;..\..\User\GeneralTim;..\..\User\STA_Test;..\..\User\SYS_BASE\Common;..\..\User\SYS_BASE\gpio;..\..\User\SYS_BASE\led;..\..\User\SYS_BASE\delay;..\..\User\SYS_BASE\usart</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -536,6 +535,16 @@
               <FilePath>..\..\User\stm32f10x_it.c</FilePath>
             </File>
             <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\SYS_BASE\delay\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_GeneralTim.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\GeneralTim\bsp_GeneralTim.c</FilePath>
+            </File>
+            <File>
               <FileName>adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\ADC\adc.c</FilePath>
@@ -546,24 +555,9 @@
               <FilePath>..\..\User\ESP8266\bsp_esp8266.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_GeneralTim.c</FileName>
+              <FileName>bsp_usart1.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\User\GeneralTim\bsp_GeneralTim.c</FilePath>
-            </File>
-            <File>
-              <FileName>STA_test.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\STA_Test\STA_test.c</FilePath>
-            </File>
-            <File>
-              <FileName>Common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\Common\Common.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\gpio\bsp_gpio.c</FilePath>
+              <FilePath>..\..\User\SYS_BASE\usart\bsp_usart1.c</FilePath>
             </File>
             <File>
               <FileName>bsp_led.c</FileName>
@@ -571,14 +565,19 @@
               <FilePath>..\..\User\SYS_BASE\led\bsp_led.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_SysTick.c</FileName>
+              <FileName>bsp_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\SysTick\bsp_SysTick.c</FilePath>
+              <FilePath>..\..\User\SYS_BASE\gpio\bsp_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_usart1.c</FileName>
+              <FileName>Common.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\usart\bsp_usart1.c</FilePath>
+              <FilePath>..\..\User\SYS_BASE\Common\Common.c</FilePath>
+            </File>
+            <File>
+              <FileName>STA_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\STA_Test\STA_test.c</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>

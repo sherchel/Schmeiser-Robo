@@ -3,7 +3,7 @@
 #include <stdio.h>  
 #include <string.h>  
 #include <stdbool.h>
-#include "bsp_SysTick.h"
+#include "delay.h"
 
 
 
@@ -158,7 +158,7 @@ void ESP8266_Rst ( void )
 	
 	#else
 	 macESP8266_RST_LOW_LEVEL();
-	 Delay_ms ( 500 ); 
+	 delay_ms ( 500 ); 
 	 macESP8266_RST_HIGH_LEVEL();
 	 
 	#endif
@@ -185,7 +185,7 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 	if ( ( reply1 == 0 ) && ( reply2 == 0 ) )                      //不需要接收数据
 		return true;
 	
-	Delay_ms ( waittime );                 //延时
+	delay_ms ( waittime );                 //延时
 	
 	strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ]  = '\0';
 
@@ -215,7 +215,7 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 //{
 //	macESP8266_RST_HIGH_LEVEL();
 //	
-//	Delay_ms ( 1000 ); 
+//	delay_ms ( 1000 ); 
 //	
 //	while ( ! ESP8266_Cmd ( "AT", "OK", NULL, 200 ) ) ESP8266_Rst ();  	
 
@@ -225,7 +225,7 @@ void ESP8266_AT_Test ( void )
 	char count=0;
 	
 	macESP8266_RST_HIGH_LEVEL();	
-	Delay_ms ( 1000 );
+	delay_ms ( 1000 );
 	while ( count < 10 ) 			//Number of checks
 	{
 		if( ESP8266_Cmd ( "AT", "OK", NULL, 500 ) ) return;
@@ -375,23 +375,23 @@ bool ESP8266_Link_Server ( ENUM_NetPro_TypeDef enumE, char * ip, char * ComNum, 
  */
 bool ESP8266_StartOrShutServer ( FunctionalState enumMode, char * pPortNum, char * pTimeOver )
 {
-	char cCmd1 [120], cCmd2 [120];
+	char cCmd1 [120];//cCmd2 [120];
 
 	if ( enumMode )
 	{
 		sprintf ( cCmd1, "AT+CIPSERVER=%d,%s", 1, pPortNum );
 		
-		sprintf ( cCmd2, "AT+CIPSTO=%s", pTimeOver );
+	//	sprintf ( cCmd2, "AT+CIPSTO=%s", pTimeOver );
 
-		return ( ESP8266_Cmd ( cCmd1, "OK", 0, 500 ) &&
-						 ESP8266_Cmd ( cCmd2, "OK", 0, 500 ) );
+		//return ( ESP8266_Cmd ( cCmd1, "OK", 0, 500 ) && ESP8266_Cmd ( cCmd2, "OK", 0, 500 ) );
+		return ( ESP8266_Cmd ( cCmd1, "OK", 0, 500 ));
 	}
 	
 	else
 	{
-		sprintf ( cCmd1, "AT+CIPSERVER=%d,%s", 0, pPortNum );
-
-		return ESP8266_Cmd ( cCmd1, "OK", 0, 500 );
+		//sprintf ( cCmd1, "AT+CIPSERVER=%d,%s", 0, pPortNum );
+		printf("AT+CIPSERVER=1,8080\r\n");
+		return 1;//return ESP8266_Cmd ( cCmd1, "OK", 0, 500 );
 	}
 	
 }
@@ -544,11 +544,11 @@ bool ESP8266_UnvarnishSend ( void )
  */
 void ESP8266_ExitUnvarnishSend ( void )
 {
-	Delay_ms ( 1000 );
+	delay_ms ( 1000 );
 	
 	macESP8266_Usart ( "+++" );
 	
-	Delay_ms ( 500 ); 
+	delay_ms ( 500 ); 
 	
 }
 

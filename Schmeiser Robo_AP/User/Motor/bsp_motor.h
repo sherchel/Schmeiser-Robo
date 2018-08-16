@@ -5,9 +5,11 @@
 
 void Left_Motor(u16 speed);
 void Right_Motor(u16 speed);
+void Fight_Motor(u16 speed);
 
 void LC_CHG(u16 ChannelPulse);
 void RC_CHG(u16 ChannelPulse);
+void FC_CHG(u16 ChannelPulse);
 
 #endif /* __BSP_MOTOR_H */
 

@@ -1,7 +1,7 @@
 #include "STA_test.h"
 #include "bsp_esp8266.h"
-#include "bsp_SysTick.h"
 #include "adc.h"
+#include "delay.h"
 #include <stdio.h>  
 #include <string.h>  
 #include <stdbool.h>
@@ -30,18 +30,18 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	
 //	ESP8266_AT_Test ();			//ESP work inspection
 	
-	ESP8266_Net_Mode_Choose ( STA );		//serve as STP
+//	ESP8266_Net_Mode_Choose ( STA );		//serve as STP
 
-    //JoinAP's Ip  ***SET Here***
-	while ( ! ESP8266_JoinAP ( macUser_ESP8266_ApSsid, macUser_ESP8266_ApPwd ) );	
-	
-	// One-to-many DISABLE
-	ESP8266_Enable_MultipleId ( DISABLE );
-	
-	
-	while ( !	ESP8266_Link_Server ( enumTCP, macUser_ESP8266_TcpServer_IP, macUser_ESP8266_TcpServer_Port, Single_ID_0 ) );
-	
-	while ( ! ESP8266_UnvarnishSend () );
+//    //JoinAP's Ip  ***SET Here***
+//	while ( ! ESP8266_JoinAP ( macUser_ESP8266_ApSsid, macUser_ESP8266_ApPwd ) );	
+//	
+//	// One-to-many DISABLE
+//	ESP8266_Enable_MultipleId ( DISABLE );
+//	
+//	
+//	while ( !	ESP8266_Link_Server ( enumTCP, macUser_ESP8266_TcpServer_IP, macUser_ESP8266_TcpServer_Port, Single_ID_0 ) );
+//	
+//	while ( ! ESP8266_UnvarnishSend () );
 	
 	//STP's Configuration Finished
 	
@@ -56,7 +56,7 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 
 		ESP8266_SendString ( ENABLE, cStr, 0, Single_ID_0 );               //发送数据,这里的Single_ID_0大概表示单人发送
 		
-		Delay_us ( 100 );
+		delay_us ( 100 );
 		
 		if ( ucTcpClosedFlag )                                             //检测是否失去连接
 		{

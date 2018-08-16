@@ -27,7 +27,7 @@
 #include "stm32f10x_it.h"
 #include <stdio.h>
 #include <string.h> 
-#include "bsp_SysTick.h"
+#include "delay.h"
 #include "bsp_esp8266.h"
 
 
@@ -142,7 +142,7 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
-	TimingDelay_Decrement();	
+	//TimingDelay_Decrement();	
 }
 
 

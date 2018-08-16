@@ -79,8 +79,8 @@
       </OPTFL>
       <CpuCode>18</CpuCode>
       <DebugOpt>
-        <uSim>0</uSim>
-        <uTrg>1</uTrg>
+        <uSim>1</uSim>
+        <uTrg>0</uTrg>
         <sLdApp>1</sLdApp>
         <sGomain>1</sGomain>
         <sRbreak>1</sRbreak>
@@ -120,7 +120,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>X駨</Name>
+          <Name>瘃O</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -154,126 +154,46 @@
           <Type>0</Type>
           <LineNumber>47</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134225242</Address>
+          <Address>134228890</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_AP\Project\User\AP_Test\AP_test.c</Filename>
+          <Filename>C:\Users\Lin\Desktop\鏈哄櫒浜哄ぇ璧?Schmeiser Robo\Schmeiser Robo_AP\Project\User\AP_Test\AP_test.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Schmeiser_Robo_AP\../../User/AP_Test/AP_test.c\47</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>58</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134225290</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_AP\Project\User\AP_Test\AP_test.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Schmeiser_Robo_AP\../../User/AP_Test/AP_test.c\58</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
           <LineNumber>61</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134225314</Address>
+          <Address>134228962</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_AP\Project\User\AP_Test\AP_test.c</Filename>
+          <Filename>C:\Users\Lin\Desktop\鏈哄櫒浜哄ぇ璧?Schmeiser Robo\Schmeiser Robo_AP\Project\User\AP_Test\AP_test.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Schmeiser_Robo_AP\../../User/AP_Test/AP_test.c\61</Expression>
         </Bp>
         <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>64</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134225330</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_AP\Project\User\AP_Test\AP_test.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Schmeiser_Robo_AP\../../User/AP_Test/AP_test.c\64</Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>79</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134225386</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_AP\Project\User\AP_Test\AP_test.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Schmeiser_Robo_AP\../../User/AP_Test/AP_test.c\79</Expression>
-        </Bp>
-        <Bp>
-          <Number>5</Number>
-          <Type>0</Type>
-          <LineNumber>91</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134225430</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_AP\Project\User\AP_Test\AP_test.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Schmeiser_Robo_AP\../../User/AP_Test/AP_test.c\91</Expression>
-        </Bp>
-        <Bp>
-          <Number>6</Number>
-          <Type>0</Type>
-          <LineNumber>101</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134225438</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_AP\Project\User\AP_Test\AP_test.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Schmeiser_Robo_AP\../../User/AP_Test/AP_test.c\101</Expression>
-        </Bp>
-        <Bp>
-          <Number>7</Number>
+          <Number>2</Number>
           <Type>0</Type>
           <LineNumber>24</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134228972</Address>
+          <Address>134229312</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo_AP\Project\User\main.c</Filename>
+          <Filename>C:\Users\Lin\Desktop\鏈哄櫒浜哄ぇ璧?Schmeiser Robo\Schmeiser Robo_AP\Project\User\main.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Schmeiser_Robo_AP\../../User/main.c\24</Expression>
         </Bp>
@@ -306,7 +226,7 @@
         <AscS3>0</AscS3>
         <aSer3>0</aSer3>
         <eProf>0</eProf>
-        <aLa>0</aLa>
+        <aLa>1</aLa>
         <aPa1>0</aPa1>
         <AscS4>0</AscS4>
         <aSer4>0</aSer4>
@@ -328,6 +248,12 @@
       <pszMrulep></pszMrulep>
       <pSingCmdsp></pSingCmdsp>
       <pMultCmdsp></pMultCmdsp>
+      <DebugDescription>
+        <Enable>1</Enable>
+        <EnableLog>0</EnableLog>
+        <Protocol>2</Protocol>
+        <DbgClock>10000000</DbgClock>
+      </DebugDescription>
     </TargetOption>
   </Target>
 
@@ -692,14 +618,26 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\User\AP_Test\AP_test.c</PathWithFileName>
-      <FilenameWithoutPath>AP_test.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\User\stm32f10x_it.c</PathWithFileName>
+      <FilenameWithoutPath>stm32f10x_it.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
       <FileNumber>29</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\User\SYS_BASE\Common\Common.c</PathWithFileName>
+      <FilenameWithoutPath>Common.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>4</GroupNumber>
+      <FileNumber>30</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -711,7 +649,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>30</FileNumber>
+      <FileNumber>31</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -723,25 +661,13 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>31</FileNumber>
+      <FileNumber>32</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\User\Motor\bsp_motor.c</PathWithFileName>
       <FilenameWithoutPath>bsp_motor.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>4</GroupNumber>
-      <FileNumber>32</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\..\User\SYS_BASE\Common\Common.c</PathWithFileName>
-      <FilenameWithoutPath>Common.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -776,8 +702,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\User\SYS_BASE\SysTick\bsp_SysTick.c</PathWithFileName>
-      <FilenameWithoutPath>bsp_SysTick.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\User\SYS_BASE\usart\bsp_usart1.c</PathWithFileName>
+      <FilenameWithoutPath>bsp_usart1.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -788,8 +714,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\User\SYS_BASE\usart\bsp_usart1.c</PathWithFileName>
-      <FilenameWithoutPath>bsp_usart1.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\User\SYS_BASE\delay\delay.c</PathWithFileName>
+      <FilenameWithoutPath>delay.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -797,11 +723,11 @@
       <GroupNumber>4</GroupNumber>
       <FileNumber>37</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\User\main.c</PathWithFileName>
-      <FilenameWithoutPath>main.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\User\AP_Test\AP_test.c</PathWithFileName>
+      <FilenameWithoutPath>AP_test.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -812,8 +738,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\User\stm32f10x_it.c</PathWithFileName>
-      <FilenameWithoutPath>stm32f10x_it.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\User\main.c</PathWithFileName>
+      <FilenameWithoutPath>main.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

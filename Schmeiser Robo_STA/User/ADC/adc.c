@@ -1,5 +1,5 @@
 #include "adc.h"
-#include "bsp_SysTick.h"
+#include "delay.h"
 
 
 	   
@@ -111,8 +111,7 @@ u16 Get_Adc_Average(u8 ch,u8 order,u8 times)
 	for(t=0;t<times;t++)
 	{
 		temp_val=Get_Adc(ch,order);
-		//Delay_us(1);
-		printf("%d=%d\r\n",order,temp_val );
+		//delay_us(1);
 	}
 //	printf("%d=%d\r\n",order,temp_val/times);
 	return temp_val/times;

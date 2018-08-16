@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\FWlib\inc;..\..\Libraries\CMSIS;..\..\User;..\..\User\AP_Test;..\..\User\ESP8266;..\..\User\GeneralTim;..\..\User\Motor;..\..\User\SYS_BASE\Common;..\..\User\SYS_BASE\gpio;..\..\User\SYS_BASE\led;..\..\User\SYS_BASE\SysTick;..\..\User\SYS_BASE\usart</IncludePath>
+              <IncludePath>..\..\Libraries\FWlib\inc;..\..\Libraries\CMSIS;..\..\User;..\..\User\AP_Test;..\..\User\ESP8266;..\..\User\GeneralTim;..\..\User\Motor;..\..\User\SYS_BASE\Common;..\..\User\SYS_BASE\gpio;..\..\User\SYS_BASE\led;..\..\User\SYS_BASE\delay;..\..\User\SYS_BASE\usart</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -531,9 +531,14 @@
           <GroupName>User</GroupName>
           <Files>
             <File>
-              <FileName>AP_test.c</FileName>
+              <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\User\AP_Test\AP_test.c</FilePath>
+              <FilePath>..\..\User\stm32f10x_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>Common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\SYS_BASE\Common\Common.c</FilePath>
             </File>
             <File>
               <FileName>bsp_esp8266.c</FileName>
@@ -551,11 +556,6 @@
               <FilePath>..\..\User\Motor\bsp_motor.c</FilePath>
             </File>
             <File>
-              <FileName>Common.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\Common\Common.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\SYS_BASE\gpio\bsp_gpio.c</FilePath>
@@ -566,24 +566,24 @@
               <FilePath>..\..\User\SYS_BASE\led\bsp_led.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_SysTick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\SysTick\bsp_SysTick.c</FilePath>
-            </File>
-            <File>
               <FileName>bsp_usart1.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\SYS_BASE\usart\bsp_usart1.c</FilePath>
             </File>
             <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\SYS_BASE\delay\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>AP_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\AP_Test\AP_test.c</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\stm32f10x_it.c</FilePath>
             </File>
           </Files>
         </Group>

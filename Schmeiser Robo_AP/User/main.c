@@ -24,8 +24,11 @@ int main ( void )
 		ESP8266_Init ();                                                               //初始化WiFi模块使用的接口和外设
 		LED_Init ();
 		GENERAL_TIM_Init();
+		delay_init();
 
-	  printf("READY\r\n");
+	    printf("READY\r\n");
+
+
 		ESP8266_StaTcpClient_UnvarnishTest ();
 	
 	
