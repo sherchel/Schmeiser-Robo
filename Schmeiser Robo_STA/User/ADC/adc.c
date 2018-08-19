@@ -104,7 +104,7 @@ u16 Get_Adc(u8 ch,u8 order)
 	return ADC_GetConversionValue(ADC1);	//返回最近一次ADC1规则组的转换结果
 }
 
-u16 Get_Adc_Average(u8 ch,u8 order,u8 times)
+ u16 Get_Adc_Average(u8 ch,u8 order,u8 times)
 {
 	u16 temp_val=0;
 	u8 t;

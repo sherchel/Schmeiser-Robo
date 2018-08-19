@@ -318,7 +318,7 @@ bool ESP8266_Enable_MultipleId ( FunctionalState enumEnUnvarnishTx )
 	
 	sprintf ( cStr, "AT+CIPMUX=%d", ( enumEnUnvarnishTx ? 1 : 0 ) );
 	
-	return ESP8266_Cmd ( cStr, "OK", 0, 500 );
+	return ESP8266_Cmd ( cStr, "OK", 0, 1000 );
 	
 }
 
@@ -384,7 +384,7 @@ bool ESP8266_StartOrShutServer ( FunctionalState enumMode, char * pPortNum, char
 	//	sprintf ( cCmd2, "AT+CIPSTO=%s", pTimeOver );
 
 		//return ( ESP8266_Cmd ( cCmd1, "OK", 0, 500 ) && ESP8266_Cmd ( cCmd2, "OK", 0, 500 ) );
-		return ( ESP8266_Cmd ( cCmd1, "OK", 0, 500 ));
+		return ( ESP8266_Cmd ( cCmd1, "OK", 0, 1000 ));
 	}
 	
 	else

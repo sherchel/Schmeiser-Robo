@@ -26,7 +26,7 @@ int main ( void )
 		GENERAL_TIM_Init();
 		delay_init();
 
-	    printf("READY\r\n");
+//	    printf("READY\r\n");
 
 
 		ESP8266_StaTcpClient_UnvarnishTest ();

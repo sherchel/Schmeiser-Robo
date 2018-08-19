@@ -17,7 +17,7 @@
 void ESP8266_StaTcpClient_UnvarnishTest ( void )
 {
 	uint8_t ucId, ucLen;
-	uint8_t Speed_Left, Speed_Right, Speed_Fight;
+	uint16_t Speed_Left, Speed_Right, Speed_Fight;
 
 	char cStr [ 100 ] = { 0 }, cCh1,cCh2,cCh3;
 
@@ -28,24 +28,25 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	
 //	ESP8266_AT_Test ();						//ESP work inspection
 
-	ESP8266_Net_Mode_Choose ( AP );     	//serve as AP
+//	ESP8266_Net_Mode_Choose ( AP );     	//serve as AP
 
   //Set AP's Ip  ***SET Here***
-	//while ( ! ESP8266_CIPAP ( macUser_ESP8266_TcpServer_IP ) );
+//	while ( ! ESP8266_CIPAP ( macUser_ESP8266_TcpServer_IP ) );
 
-  //Create WiFi  ***SET Here***
-	//while ( ! ESP8266_BuildAP ( macUser_ESP8266_BulitApSsid, macUser_ESP8266_BulitApPwd, macUser_ESP8266_BulitApEcn ) );	
+//  //Create WiFi  ***SET Here***
+//	while ( ! ESP8266_BuildAP ( macUser_ESP8266_BulitApSsid, macUser_ESP8266_BulitApPwd, macUser_ESP8266_BulitApEcn ) );	
 	
 	// One-to-many ENABLE
 	ESP8266_Enable_MultipleId (ENABLE);
 	
 	//Start Server   ***SET Here***
-	while ( !	ESP8266_StartOrShutServer ( ENABLE, macUser_ESP8266_TcpServer_Port, macUser_ESP8266_TcpServer_OverTime ) );
+	ESP8266_StartOrShutServer ( ENABLE, macUser_ESP8266_TcpServer_Port, macUser_ESP8266_TcpServer_OverTime );
+	//while ( !	ESP8266_StartOrShutServer ( ENABLE, macUser_ESP8266_TcpServer_Port, macUser_ESP8266_TcpServer_OverTime ) );
 
 	//AP's Configuration Finished
-	ESP8266_Inquire_ApIp ( cStr, 20 );
-	printf ( "\r\n本模块WIFI为%s，密码开放\r\nAP IP 为：%s，开启的端口为：%s\r\n",
-           macUser_ESP8266_BulitApSsid, cStr, macUser_ESP8266_TcpServer_Port );
+//	ESP8266_Inquire_ApIp ( cStr, 20 );
+//	printf ( "\r\n本模块WIFI为%s，密码开放\r\nAP IP 为：%s，开启的端口为：%s\r\n",
+//           macUser_ESP8266_BulitApSsid, cStr, macUser_ESP8266_TcpServer_Port );
 	
 	
 	strEsp8266_Fram_Record .InfBit .FramLength = 0;

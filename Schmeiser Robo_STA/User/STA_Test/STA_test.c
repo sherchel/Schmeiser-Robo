@@ -24,7 +24,16 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	uint8_t ucStatus;
 	
 	char cStr [ 100 ] = { 0 };
+	char cCmd [120];
+	
 	u16 adcL = 0, adcR = 0, adcF = 0;
+	char strL[3]={0} , strR[3]={0} , strF[3]={0} ;
+	
+
+	//ESP8266_Cmd ( "AT+CWAUTOCONN=1", NULL, NULL, 15000 );
+	
+	//sprintf ( cCmd, "AT+SAVETRANSLINK=%d,\"%s\",%s,\"%s\"", macUser_ESP8266_TcpServer_IP, macUser_ESP8266_TcpServer_Port ,"TCP" );
+	//ESP8266_Cmd ( cCmd, NULL, NULL, 15000 );
 
 //	macESP8266_CH_ENABLE();		
 	
@@ -48,12 +57,15 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	
 	while ( 1 )
 	{		
-		adcL = Get_Adc_Average(ADC_Channel_0,1,10);
+		adcL = Get_Adc_Average(ADC_Channel_0, 1,10);
 		adcR = Get_Adc_Average(ADC_Channel_1, 2,10);
 		adcF = Get_Adc_Average(ADC_Channel_2, 3,10);
-		
-		sprintf(cStr, "LEFT_MOVE_%d\r\nRIGHT_MOVE_%d\r\nFIGHT_%d\r\n", adcL, adcR, adcF);
 
+		strL[2]=adcL%10+0x30;  strL[1]=adcL/10%10+0x30;  strL[0]=adcL/100+0x30;
+		strR[2]=adcR%10+0x30;  strR[1]=adcR/10%10+0x30;  strR[0]=adcR/100+0x30;
+		strF[2]=adcF%10+0x30;  strF[1]=adcF/10%10+0x30;  strF[0]=adcF/100+0x30;
+
+		sprintf(cStr, "LEFT_MOVE_%s\r\nRIGHT_MOVE_%s\r\nFIGHT_%s\r\n", strL, strR, strF);
 		ESP8266_SendString ( ENABLE, cStr, 0, Single_ID_0 );               //发送数据,这里的Single_ID_0大概表示单人发送
 		
 		delay_us ( 100 );
