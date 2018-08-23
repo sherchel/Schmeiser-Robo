@@ -16,27 +16,29 @@ Linker/Locator:  ArmLink.exe V5.06 update 2 (build 183)
 Library Manager: ArmAr.exe V5.06 update 2 (build 183)
 Hex Converter:   FromElf.exe V5.06 update 2 (build 183)
 CPU DLL:         SARMCM3.DLL V5.20
-Dialog DLL:      DCM.DLL V1.13.7.0
+Dialog DLL:      DARMSTM.DLL V1.66.0.0
 Target DLL:      Segger\JL2CM3.dll V2.99.20.0
-Dialog DLL:      TCM.DLL V1.14.9.0
+Dialog DLL:      TARMSTM.DLL V1.65.0.0
  
 <h2>Project:</h2>
-C:\Users\Lin\Desktop\机器人大赛\Schmeiser Robo\Schmeiser Robo_AP\Project\RVMDK（uv5）\Schmeiser Robo_AP.uvprojx
+C:\Users\Lin\Desktop\机器人大赛\Schmeiser Robo\Schmeiser Robo_AP\Project\RVMDK（uv5）\BH-F103.uvprojx
 Project File Date:  08/19/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 2 (build 183)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Build target 'Schmeiser Robo_AP'
-compiling bsp_motor.c...
-compiling main.c...
-..\..\User\AP_INIT.h(14): warning:  #1-D: last line of file ends without a newline
-  #endif /* __INIT_H */
-..\..\User\main.c: 1 warning, 0 errors
-compiling bsp_GeneralTim.c...
+Build target 'TIM—通用定时器-4路PWM输出'
+compiling AP_test.c...
+..\..\User\AP_Test\AP_test.c(22): warning:  #177-D: variable "ucId" was declared but never referenced
+  	uint8_t ucId, ucLen;
+..\..\User\AP_Test\AP_test.c(22): warning:  #177-D: variable "ucLen" was declared but never referenced
+  	uint8_t ucId, ucLen;
+..\..\User\AP_Test\AP_test.c(25): warning:  #177-D: variable "cStr" was declared but never referenced
+  	char cStr [ 100 ] = { 0 }, cCh1,cCh2,cCh3;
+..\..\User\AP_Test\AP_test.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=12000 RO-data=268 RW-data=48 ZI-data=2056  
+Program Size: Code=11376 RO-data=268 RW-data=52 ZI-data=2052  
 FromELF: creating hex file...
-".\Objects\Schmeiser Robo_AP.axf" - 0 Error(s), 1 Warning(s).
+"..\..\Output\Schmeiser Robo_AP.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -46,11 +48,11 @@ Package Vendor: Keil
                 STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  .\RTE\_Schmeiser_Robo_AP
+  .\RTE\_TIM____________-4__PWM____
   C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:07
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

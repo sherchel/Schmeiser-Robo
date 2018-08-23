@@ -57,9 +57,15 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	
 	while ( 1 )
 	{		
-		adcL = Get_Adc_Average(ADC_Channel_0, 1,10);
-		adcR = Get_Adc_Average(ADC_Channel_1, 2,10);
+		adcR = Get_Adc_Average(ADC_Channel_0, 1,10);
+		adcL = Get_Adc_Average(ADC_Channel_1, 2,10);
 		adcF = Get_Adc_Average(ADC_Channel_2, 3,10);
+		
+		adcF=adcF*300/409+100;
+	//	adcL=(409-adcL)*300/409+100;
+	//	adcR=(409-adcR)*300/409+100;
+		adcL=(409-adcL)*150/409+250;
+		adcR=(409-adcR)*150/409+250;
 
 		strL[2]=adcL%10+0x30;  strL[1]=adcL/10%10+0x30;  strL[0]=adcL/100+0x30;
 		strR[2]=adcR%10+0x30;  strR[1]=adcR/10%10+0x30;  strR[0]=adcR/100+0x30;
@@ -68,7 +74,7 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 		sprintf(cStr, "LEFT_MOVE_%s\r\nRIGHT_MOVE_%s\r\nFIGHT_%s\r\n", strL, strR, strF);
 		ESP8266_SendString ( ENABLE, cStr, 0, Single_ID_0 );               //发送数据,这里的Single_ID_0大概表示单人发送
 		
-		delay_us ( 100 );
+		//delay_us ( 100 );
 		
 		if ( ucTcpClosedFlag )                                             //检测是否失去连接
 		{

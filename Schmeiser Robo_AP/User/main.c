@@ -1,41 +1,31 @@
-/**
-  ******************************************************************************
-  * @file    main.c
-  * @author
-  * @version 
-  * @date    
-  * @brief  
-  ******************************************************************************
-  */ 
- 
-#include "stm32f10x.h"
-#include "AP_INIT.h"
 
+// TIM—通用定时器-4路PWM输出应用
+#include "stm32f10x.h"
+#include "bsp_led.h"
+#include "bsp_GeneralTim.h"  
+#include "bsp_usart1.h"
 
 /**
   * @brief  主函数
-  * @param  无
+  * @param  无  
   * @retval 无
   */
-int main ( void )
+int main(void)
 {
-	/* 初始化 */
-		USARTx_Config ();                                                              //初始化串口1
-		ESP8266_Init ();                                                               //初始化WiFi模块使用的接口和外设
-		LED_Init ();
-		GENERAL_TIM_Init();
-		delay_init();
 
-//	    printf("READY\r\n");
-
-
-		ESP8266_StaTcpClient_UnvarnishTest ();
+	
+	/* 定时器初始化 */
+	GENERAL_TIM_Init();
+	
+	ESP8266_Init ();//初始化WiFi模块使用的接口和外设
 	
 	
-  while ( 1 );
+	//printf("READY\r\n");
 	
+	ESP8266_StaTcpClient_UnvarnishTest ();
 	
+  while(1)
+  {      
+  }
 }
-
-
 /*********************************************END OF FILE**********************/

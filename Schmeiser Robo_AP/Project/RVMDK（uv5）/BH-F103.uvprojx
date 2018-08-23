@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>Schmeiser Robo_AP</TargetName>
+      <TargetName>TIM—通用定时器-4路PWM输出</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060183::V5.06 update 2 (build 183)::ARMCC</pCCUsed>
@@ -48,14 +48,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\Objects\</OutputDirectory>
+          <OutputDirectory>..\..\Output\</OutputDirectory>
           <OutputName>Schmeiser Robo_AP</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\Listings\</ListingPath>
+          <ListingPath>..\..\Listing\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -110,13 +110,13 @@
         </CommonProperty>
         <DllOption>
           <SimDllName>SARMCM3.DLL</SimDllName>
-          <SimDllArguments> -REMAP</SimDllArguments>
-          <SimDlgDll>DCM.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pCM3</SimDlgDllArguments>
+          <SimDllArguments>-REMAP</SimDllArguments>
+          <SimDlgDll>DARMSTM.DLL</SimDlgDll>
+          <SimDlgDllArguments>-pSTM32F103C8</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
-          <TargetDllArguments></TargetDllArguments>
-          <TargetDlgDll>TCM.DLL</TargetDlgDll>
-          <TargetDlgDllArguments>-pCM3</TargetDlgDllArguments>
+          <TargetDllArguments>-REMAP</TargetDllArguments>
+          <TargetDlgDll>TARMSTM.DLL</TargetDlgDll>
+          <TargetDlgDllArguments>-pSTM32F103C8</TargetDlgDllArguments>
         </DllOption>
         <DebugOption>
           <OPTHX>
@@ -320,13 +320,13 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>0</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
-            <v6Lang>1</v6Lang>
-            <v6LangP>1</v6LangP>
+            <v6Lang>0</v6Lang>
+            <v6LangP>0</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_MD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\FWlib\inc;..\..\Libraries\CMSIS;..\..\User;..\..\User\AP_Test;..\..\User\ESP8266;..\..\User\GeneralTim;..\..\User\Motor;..\..\User\SYS_BASE\Common;..\..\User\SYS_BASE\gpio;..\..\User\SYS_BASE\led;..\..\User\SYS_BASE\delay;..\..\User\SYS_BASE\usart</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\Led;..\..\User\GeneralTim;..\..\User\usart;..\..\User\ESP8266;..\..\User\delay;..\..\User\Common;..\..\User\AP_Test</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -367,7 +367,7 @@
             <TextAddressRange>0x08000000</TextAddressRange>
             <DataAddressRange>0x20000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile></ScatterFile>
+            <ScatterFile>..\..\..\..\..\..\stm32-ram.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>
@@ -378,28 +378,8 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>DOC</GroupName>
+          <GroupName>STARTUP</GroupName>
           <Files>
-            <File>
-              <FileName>CodeDesignRecord.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\..\User\CodeDesignRecord.txt</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>STARUP</GroupName>
-          <Files>
-            <File>
-              <FileName>core_cm3.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\Libraries\CMSIS\core_cm3.c</FilePath>
-            </File>
-            <File>
-              <FileName>system_stm32f10x.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\Libraries\CMSIS\system_stm32f10x.c</FilePath>
-            </File>
             <File>
               <FileName>startup_stm32f10x_md.s</FileName>
               <FileType>2</FileType>
@@ -408,7 +388,37 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Libraries</GroupName>
+          <GroupName>CMSIS</GroupName>
+          <Files>
+            <File>
+              <FileName>core_cm3.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\CMSIS\core_cm3.c</FilePath>
+            </File>
+            <File>
+              <FileName>core_cm3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Libraries\CMSIS\core_cm3.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Libraries\CMSIS\stm32f10x.h</FilePath>
+            </File>
+            <File>
+              <FileName>system_stm32f10x.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Libraries\CMSIS\system_stm32f10x.c</FilePath>
+            </File>
+            <File>
+              <FileName>system_stm32f10x.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Libraries\CMSIS\system_stm32f10x.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FWLB</GroupName>
           <Files>
             <File>
               <FileName>misc.c</FileName>
@@ -528,17 +538,32 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>User</GroupName>
+          <GroupName>USER</GroupName>
           <Files>
+            <File>
+              <FileName>stm32f10x_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\User\stm32f10x_conf.h</FilePath>
+            </File>
             <File>
               <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\stm32f10x_it.c</FilePath>
             </File>
             <File>
-              <FileName>Common.c</FileName>
+              <FileName>stm32f10x_it.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\User\stm32f10x_it.h</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\Common\Common.c</FilePath>
+              <FilePath>..\..\User\Led\bsp_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_usart1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\usart\bsp_usart1.c</FilePath>
             </File>
             <File>
               <FileName>bsp_esp8266.c</FileName>
@@ -551,29 +576,14 @@
               <FilePath>..\..\User\GeneralTim\bsp_GeneralTim.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_motor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\Motor\bsp_motor.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\gpio\bsp_gpio.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\led\bsp_led.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_usart1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\usart\bsp_usart1.c</FilePath>
-            </File>
-            <File>
               <FileName>delay.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\User\SYS_BASE\delay\delay.c</FilePath>
+              <FilePath>..\..\User\delay\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>Common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\Common\Common.c</FilePath>
             </File>
             <File>
               <FileName>AP_test.c</FileName>
@@ -584,6 +594,16 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\main.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>DOC</GroupName>
+          <Files>
+            <File>
+              <FileName>readme.txt</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\Doc\readme.txt</FilePath>
             </File>
           </Files>
         </Group>

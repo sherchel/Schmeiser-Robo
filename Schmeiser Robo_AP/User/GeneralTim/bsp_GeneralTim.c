@@ -1,6 +1,7 @@
 
 #include "bsp_GeneralTim.h" 
 
+
 static void GENERAL_TIM_GPIO_Config(void) 
 {
   GPIO_InitTypeDef GPIO_InitStructure;
@@ -28,10 +29,10 @@ static void GENERAL_TIM_GPIO_Config(void)
 	
 	// 输出比较通道4 GPIO 初始化
 	RCC_APB2PeriphClockCmd(GENERAL_TIM_CH3_GPIO_CLK, ENABLE);
-  GPIO_InitStructure.GPIO_Pin =  GENERAL_TIM_CH4_PIN;
+  GPIO_InitStructure.GPIO_Pin =  GENERAL_TIM_CH3_PIN;
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_Init(GENERAL_TIM_CH4_PORT, &GPIO_InitStructure);
+  GPIO_Init(GENERAL_TIM_CH3_PORT, &GPIO_InitStructure);
 }
 
 
@@ -58,22 +59,13 @@ static void GENERAL_TIM_GPIO_Config(void)
 
 static void GENERAL_TIM_Mode_Config(void)
 {
-   TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
-	 TIM_OCInitTypeDef  TIM_OCInitStructure;
-
-	// 占空比配置
-	uint16_t CCR1_Val = 0;
-	uint16_t CCR2_Val = 0;
-	uint16_t CCR3_Val = 0;
-	uint16_t CCR4_Val = 0;
-	
-	// 开启定时器时钟,即内部时钟CK_INT=72M
+  // 开启定时器时钟,即内部时钟CK_INT=72M
 	GENERAL_TIM_APBxClock_FUN(GENERAL_TIM_CLK,ENABLE);
-	
+
 /*--------------------时基结构体初始化-------------------------*/
 	// 配置周期，这里配置为100K
 	
- 
+  TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
 	// 自动重装载寄存器的值，累计TIM_Period+1个频率后产生一个更新或者中断
 	TIM_TimeBaseStructure.TIM_Period=GENERAL_TIM_Period;	
 	// 驱动CNT计数器的时钟 = Fck_int/(psc+1)
@@ -88,9 +80,13 @@ static void GENERAL_TIM_Mode_Config(void)
 	TIM_TimeBaseInit(GENERAL_TIM, &TIM_TimeBaseStructure);
 
 	/*--------------------输出比较结构体初始化-------------------*/	
-
+	// 占空比配置
+	uint16_t CCR1_Val = 5000;
+	uint16_t CCR2_Val = 4000;
+	uint16_t CCR3_Val = 3000;
+	//uint16_t CCR4_Val = 2000;
 	
-	
+	TIM_OCInitTypeDef  TIM_OCInitStructure;
 	// 配置为PWM模式1
 	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
 	// 输出使能
@@ -112,15 +108,32 @@ static void GENERAL_TIM_Mode_Config(void)
 	TIM_OCInitStructure.TIM_Pulse = CCR3_Val;
 	TIM_OC3Init(GENERAL_TIM, &TIM_OCInitStructure);
 	TIM_OC3PreloadConfig(GENERAL_TIM, TIM_OCPreload_Enable);
-	
-	// 输出比较通道 4
-	TIM_OCInitStructure.TIM_Pulse = CCR4_Val;
-	TIM_OC4Init(GENERAL_TIM, &TIM_OCInitStructure);
-	TIM_OC4PreloadConfig(GENERAL_TIM, TIM_OCPreload_Enable);
+	TIM_ARRPreloadConfig(GENERAL_TIM,ENABLE);//;enable value of ARR
+//	// 输出比较通道 4
+//	TIM_OCInitStructure.TIM_Pulse = CCR4_Val;
+//	TIM_OC4Init(GENERAL_TIM, &TIM_OCInitStructure);
+//	TIM_OC4PreloadConfig(GENERAL_TIM, TIM_OCPreload_Enable);
 	
 	// 使能计数器
 	TIM_Cmd(GENERAL_TIM, ENABLE);
+	
+//	TIM_ITConfig(GENERAL_TIM, TIM_IT_Update, ENABLE);//使能update中断
+//		
+//	NVIC_Config_PWM();//配置中断优先级		
 }
+
+//static void NVIC_Config_PWM(void)
+//{
+//  NVIC_InitTypeDef NVIC_InitStructure;
+//  
+//  
+//  /* 配置TIM3_IRQ中断为中断源 */
+//  NVIC_InitStructure.NVIC_IRQChannel = TIM3_IRQn;
+//  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+//  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+//  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+//  NVIC_Init(&NVIC_InitStructure);
+//}
 
 void GENERAL_TIM_Init(void)
 {

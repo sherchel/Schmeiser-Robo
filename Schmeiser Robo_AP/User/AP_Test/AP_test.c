@@ -3,9 +3,12 @@
 #include <stdio.h>  
 #include <string.h>  
 #include <stdbool.h>
-#include "bsp_led.h"
-#include "bsp_motor.h"
+//#include "bsp_led.h"
+//#include "bsp_motor.h"
 #include "delay.h"
+#include "bsp_GeneralTim.h" 
+
+uint16_t Left=0, Right=0, Fight=0;
 
 
 
@@ -20,7 +23,8 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	uint16_t Speed_Left, Speed_Right, Speed_Fight;
 
 	char cStr [ 100 ] = { 0 }, cCh1,cCh2,cCh3;
-
+	
+	
   char * pstr;
 	
 
@@ -38,7 +42,7 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	
 	// One-to-many ENABLE
 	ESP8266_Enable_MultipleId (ENABLE);
-	
+	//printf("READY2\r\n");
 	//Start Server   ***SET Here***
 	ESP8266_StartOrShutServer ( ENABLE, macUser_ESP8266_TcpServer_Port, macUser_ESP8266_TcpServer_OverTime );
 	//while ( !	ESP8266_StartOrShutServer ( ENABLE, macUser_ESP8266_TcpServer_Port, macUser_ESP8266_TcpServer_OverTime ) );
@@ -51,15 +55,27 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 	
 	strEsp8266_Fram_Record .InfBit .FramLength = 0;
 	strEsp8266_Fram_Record .InfBit .FramFinishFlag = 1;	
+	//printf("READY3\r\n");
+//	TIM_SetCompare1(TIM3,8000);
+//	TIM_SetCompare2(TIM3,8000);
+//	TIM_SetCompare3(TIM3,8000);
+//	delay_us(20000000);
+//	TIM_SetCompare1(TIM3,2000);
+//	TIM_SetCompare2(TIM3,2000);
+//	TIM_SetCompare3(TIM3,2000);
+//  delay_us(200000);
+//	
 	
 	while ( 1 )
 	{		
 		
-	//	printf("READY2\r\n");
+		
 		if ( strEsp8266_Fram_Record .InfBit .FramFinishFlag )
 		{
 			USART_ITConfig ( macESP8266_USARTx, USART_IT_RXNE, DISABLE ); //禁用串口接收中断
 			strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ]  = '\0';
+		 // printf("%s\r\n",strEsp8266_Fram_Record .Data_RX_BUF);
+			//printf("%d\r\n",strEsp8266_Fram_Record .InfBit .FramLength);
 
 			//左轮速度指令
 			if ( ( pstr = strstr ( strEsp8266_Fram_Record .Data_RX_BUF, "LEFT_MOVE_" ) ) != 0 ) 
@@ -68,9 +84,16 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 				cCh2 = * ( pstr + 11 );
 				cCh3 = * ( pstr + 12 );
 				
+				//receive 250-400  output1250-2000
 				Speed_Left = (cCh1 - 48) * 100 + (cCh2 - 48) * 10 + (cCh3 - 48);
-				Left_Motor( Speed_Left );
+				Left=Speed_Left*5;
+				TIM_SetCompare1(TIM3,Left);
 				
+			//	Left_Motor( Speed_Left );
+					
+
+				//`printf("LEFT=%d\r\n",Left);
+						
 				
 			}
 			//右轮速度指令
@@ -81,8 +104,11 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 				cCh3 = * ( pstr + 13 );
 
 				Speed_Right = (cCh1 - 48) * 100 + (cCh2 - 48) * 10 + (cCh3 - 48);
-				Right_Motor(Speed_Right);
-				
+			//	Right_Motor(Speed_Right);
+			//	TIM3->CCR2 = Right;
+				Right=Speed_Right*5;
+				TIM_SetCompare2(TIM3,Right);
+
 				
 			}
 			//武器系统速度指令 	
@@ -93,7 +119,10 @@ void ESP8266_StaTcpClient_UnvarnishTest ( void )
 				cCh3 = * ( pstr + 8 );
 
 				Speed_Fight = (cCh1 - 48) * 100 + (cCh2 - 48) * 10 + (cCh3 - 48);
-			  Fight_Motor(Speed_Fight);
+			 // Fight_Motor(Speed_Fight);
+			 // TIM3->CCR3 = Fight;
+				Fight=Speed_Fight*5;
+				TIM_SetCompare3(TIM3,Fight);
 			}
 
 				

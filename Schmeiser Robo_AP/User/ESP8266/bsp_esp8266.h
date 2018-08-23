@@ -4,9 +4,9 @@
 
 
 #include "stm32f10x.h"
-#include "common.h"
 #include <stdio.h>
 #include <stdbool.h>
+#include "common.h"
 
 
 

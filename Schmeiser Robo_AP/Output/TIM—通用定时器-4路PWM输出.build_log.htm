@@ -21,25 +21,34 @@ Target DLL:      Segger\JL2CM3.dll V2.99.20.0
 Dialog DLL:      TARMSTM.DLL V1.65.0.0
  
 <h2>Project:</h2>
-C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\Schmeiser Robo\Project\RVMDK（uv5）\iSO-STM32.uvprojx
-Project File Date:  08/12/2018
+C:\Users\Lin\Desktop\Mix_test\TrueSTUDIO\2-TIM—通用定时器-4路PWM输出\Project\RVMDK（uv5）\BH-F103.uvprojx
+Project File Date:  08/19/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 2 (build 183)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
-Build target 'WF-ESP8266'
-compiling test.c...
+Build target 'TIM—通用定时器-4路PWM输出'
+compiling main.c...
+..\..\User\main.c(20): warning:  #223-D: function "ESP8266_Init" declared implicitly
+  	ESP8266_Init ();//??始化WiFi模??使?玫慕涌诤?????
+..\..\User\main.c(25): warning:  #223-D: function "ESP8266_StaTcpClient_UnvarnishTest" declared implicitly
+  	ESP8266_StaTcpClient_UnvarnishTest ();
+..\..\User\main.c: 2 warnings, 0 errors
+compiling AP_test.c...
+..\..\User\AP_Test\AP_test.c(22): warning:  #177-D: variable "ucId" was declared but never referenced
+  	uint8_t ucId, ucLen;
+..\..\User\AP_Test\AP_test.c(22): warning:  #177-D: variable "ucLen" was declared but never referenced
+  	uint8_t ucId, ucLen;
+..\..\User\AP_Test\AP_test.c(23): warning:  #550-D: variable "Speed_Fight" was set but never used
+  	uint16_t Speed_Left, Speed_Right, Speed_Fight;
+..\..\User\AP_Test\AP_test.c(25): warning:  #177-D: variable "cStr" was declared but never referenced
+  	char cStr [ 100 ] = { 0 }, cCh1,cCh2,cCh3;
+..\..\User\AP_Test\AP_test.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=7844 RO-data=1460 RW-data=52 ZI-data=2052  
+Program Size: Code=11412 RO-data=268 RW-data=52 ZI-data=2052  
 FromELF: creating hex file...
-"..\..\Output\Template.axf" - 0 Error(s), 0 Warning(s).
+"..\..\Output\TIM—通用定时器-4路PWM输出.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
-
-Package Vendor: ARM
-                http://www.keil.com/pack/ARM.CMSIS.4.5.0.pack
-                ARM.CMSIS.4.5.0
-                CMSIS (Cortex Microcontroller Software Interface Standard)
-   * Component: CORE Version: 4.3.0
 
 Package Vendor: Keil
                 http://www.keil.com/pack/Keil.STM32F1xx_DFP.1.1.0.pack
@@ -47,14 +56,11 @@ Package Vendor: Keil
                 STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  .\RTE\_WF-ESP8266
-  C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+  .\RTE\_TIM____________-4__PWM____
   C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.1.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-
-   * Component: ARM::CMSIS:CORE:4.3.0
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

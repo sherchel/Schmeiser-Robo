@@ -25,12 +25,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
-#include <stdio.h>
-#include <string.h> 
-#include "bsp_esp8266.h"
- 
+#include "bsp_GeneralTim.h" 
 
-
+extern uint16_t Left, Right, Fight;
 
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
@@ -140,11 +137,9 @@ void PendSV_Handler(void)
   * @param  None
   * @retval None
   */
-//void SysTick_Handler(void)
-//{
-//	TimingDelay_Decrement();	
-//}
-
+void SysTick_Handler(void)
+{
+}
 
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
@@ -152,12 +147,28 @@ void PendSV_Handler(void)
 /*  available peripheral interrupt handler's name please refer to the startup */
 /*  file (startup_stm32f10x_xx.s).                                            */
 /******************************************************************************/
+
 /**
-  * @brief  This function handles macESP8266_USARTx Handler.
+  * @brief  This function handles TIM2 interrupt request.
   * @param  None
   * @retval None
   */
-void macESP8266_USART_INT_FUN ( void )
+
+/**
+  * @brief  This function handles PPP interrupt request.
+  * @param  None
+  * @retval None
+  */
+/*void PPP_IRQHandler(void)
+{
+}*/
+
+/**
+  * @}
+  */ 
+
+
+void USART1_IRQHandler ( void )
 {	
 	uint8_t ucCh;
 	
@@ -182,18 +193,22 @@ void macESP8266_USART_INT_FUN ( void )
 }
 
 
-/**
-  * @brief  This function handles PPP interrupt request.
-  * @param  None
-  * @retval None
-  */
-/*void PPP_IRQHandler(void)
-{
-}*/
 
-/**
-  * @}
-  */ 
+///* TIM3中断服务函数 */
+//void TIM3_IRQHandler(void)
+//{	
 
+//	
+//	if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)	//TIM_IT_Update
+// 	{			
+//	
+//			TIM3->CCR1 = Left;
+//	   	TIM3->CCR2 = Right;
+//	   	TIM3->CCR3 = Fight;
+//		
+//		
+//		TIM_ClearITPendingBit (TIM3, TIM_IT_Update);	//必须要清除中断标志位
+//	}
+//}
 
 /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/

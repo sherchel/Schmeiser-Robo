@@ -1,9 +1,9 @@
 #include "bsp_esp8266.h"
-#include "common.h"
 #include <stdio.h>  
 #include <string.h>  
 #include <stdbool.h>
 #include "delay.h"
+#include "common.h"
 
 
 
@@ -24,14 +24,14 @@ struct  STRUCT_USARTx_Fram strEsp8266_Fram_Record = { 0 };
   */
 void ESP8266_Init ( void )
 {
-	ESP8266_GPIO_Config (); 
+	//ESP8266_GPIO_Config (); 
 	
 	ESP8266_USART_Config (); 
 	
 	
-	macESP8266_RST_HIGH_LEVEL();
+	//macESP8266_RST_HIGH_LEVEL();
 
-	macESP8266_CH_DISABLE();
+	//macESP8266_CH_DISABLE();
 	
 	
 }
@@ -132,7 +132,7 @@ static void ESP8266_USART_NVIC_Configuration ( void )
 	
 	
 	/* Configure the NVIC Preemption Priority Bits */  
-	NVIC_PriorityGroupConfig ( macNVIC_PriorityGroup_x );
+//	NVIC_PriorityGroupConfig ( macNVIC_PriorityGroup_x );
 
 	/* Enable the USART2 Interrupt */
 	NVIC_InitStructure.NVIC_IRQChannel = macESP8266_USART_IRQ;	 
@@ -158,7 +158,7 @@ void ESP8266_Rst ( void )
 	
 	#else
 	 macESP8266_RST_LOW_LEVEL();
-	 delay_ms ( 500 ); 
+	 //delay_ms ( 500 ); 
 	 macESP8266_RST_HIGH_LEVEL();
 	 
 	#endif
@@ -185,7 +185,7 @@ bool ESP8266_Cmd ( char * cmd, char * reply1, char * reply2, u32 waittime )
 	if ( ( reply1 == 0 ) && ( reply2 == 0 ) )                      //不需要接收数据
 		return true;
 	
-	delay_ms ( waittime );                 //延时
+	//delay_ms ( waittime );                 //延时
 	
 	strEsp8266_Fram_Record .Data_RX_BUF [ strEsp8266_Fram_Record .InfBit .FramLength ]  = '\0';
 
@@ -225,7 +225,7 @@ void ESP8266_AT_Test ( void )
 	char count=0;
 	
 	macESP8266_RST_HIGH_LEVEL();	
-	delay_ms ( 1000 );
+	//delay_ms ( 1000 );
 	while ( count < 10 ) 			//Number of checks
 	{
 		if( ESP8266_Cmd ( "AT", "OK", NULL, 500 ) ) return;
@@ -544,11 +544,11 @@ bool ESP8266_UnvarnishSend ( void )
  */
 void ESP8266_ExitUnvarnishSend ( void )
 {
-	delay_ms ( 1000 );
+	//delay_ms ( 1000 );
 	
 	macESP8266_Usart ( "+++" );
 	
-	delay_ms ( 500 ); 
+	//delay_ms ( 500 ); 
 	
 }
 
